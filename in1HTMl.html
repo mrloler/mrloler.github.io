@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+//value = 15ms, center on value: 51,75
+var HitRange = [46,57.5];
+var PerfectRange = [49, 54]
+
+//Default Keys
+var Key1 = "q"
+var Key2 = "w"
+var Key3 = "o"
+var Key4 = "p"
+var KeyArray = [Key1,Key2,Key3,Key4]
+
+// Keys Uppercased
+var UpKeyArray = KeyArray.map(function(x){ return x.toUpperCase();})
+
+var OGNote1 = document.createElement("div");
+var OGNote2 = document.createElement("div");
+var OGNote3 = document.createElement("div");
+var OGNote4 = document.createElement("div");
+
+OGNote1.className = "Note1";
+OGNote2.className = "Note2";
+OGNote3.className = "Note3";
+OGNote4.className = "Note4";
+
+var NoteObject = {OGNote1, OGNote2, OGNote3, OGNote4}
+
+var VolumeSlider
+
+var Started = false;
+//var startButton = document.getElementById("StartButton")
+
+function OnLoad() {
+    hitMessage = document.getElementById("HitMessage")
+    missMessage = document.getElementById("MissMessage")
+    perfectMessage = document.getElementById("PerfectMessage")
+
+    UpDateKeys()
+    
+    document.getElementById("KeyBinding1").innerHTML = UpKeyArray[0]
+    document.getElementById("KeyBinding2").innerHTML = UpKeyArray[1]
+    document.getElementById("KeyBinding3").innerHTML = UpKeyArray[2]
+    document.getElementById("KeyBinding4").innerHTML = UpKeyArray[3]
+
+    VolumeSlider = document.getElementById("VolumeSlider")
+    
+    VolumeSlider.oninput = function() {
+        Song3.volume = VolumeSlider.value/100
+    }
+    //startButton = document.getElementById("StartButton")
+}
+/* 
+function StartButton() {
+    if (startButton.parentNode != null) {
+        startButton.parentNode.removeChild(startButton)
+        Start()
+    }
+}
+*/
+var Song1
+var Song2
+var Song3 = new Audio("RandomStreetsBeat.mp3")
+
+var Patterns ={
+    Pattern1: function() {
+        //74bpm
+        //in miliseconds
+        var beat = 922
+        var tick = beat/4
+        //When to start song
+        var StartMusicTime = 1000
+        //wait till note start
+        var Timeout = 1300;
+        //Milliseconds per beat
+        
+            if (!Started) {
+            Started = true 
+            //plays song after timeout
+            setTimeout(function() {
+                Song3.play();
+            }, StartMusicTime)
+            // (note,Timeout)
+            // Timeout += delay till next
+            for (i=0; i<100; i++) {
+                NextNote("1",Timeout)
+                NextNote("2",Timeout)
+                NextNote("3",Timeout)
+                NextNote("4",Timeout)
+                Timeout += beat
+            } 
+        }        
+    },
+    Pattern2: function() {
+        if (!Started) {
+            Started = true 
+            //plays song
+            //Song1.play();
+            //wait till start
+            var Timeout = 1200
+            // (note,Timeout)
+            // Timeout + delay till next
+            NextNote("1",Timeout)
+            Timeout += 128
+            NextNote("2",Timeout)
+            Timeout += 128
+            NextNote("3",Timeout)
+            Timeout += 128
+            NextNote("4",Timeout)
+            Timeout += 128
+            NextNote("3",Timeout)
+            Timeout += 128
+            NextNote("2",Timeout)
+            Timeout += 256
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += 256
+            NextNote("3",Timeout)
+            Timeout += 128
+            NextNote("2",Timeout)
+            Timeout += 256
+            NextNote("4",Timeout)
+            NextNote("1",Timeout)
+            Timeout += 256
+            //end
+            setTimeout(function() {
+                Started = false
+                hitMessage.style.opacity = 0
+                missMessage.style.opacity = 0
+                perfectMessage.style.opacity = 0
+            }, Timeout)
+        }    
+    },  
+    Pattern3: function() {
+        //in miliseconds
+        var beat = 922
+        var tick = beat/4
+        //When to start song
+        var StartMusicTime = 1000
+        //wait till note start
+        var Timeout = 1300;
+        //Milliseconds per beat
+        
+        if (!Started) {
+            Started = true 
+            //plays song after timeout
+            setTimeout(function() {
+                Song3.play();
+            }, StartMusicTime)
+            // (note,Timeout)
+            // Timeout += delay till next
+            for (i=0; i<1000; i++) {
+                NextNote("1",Timeout)
+                NextNote("2",Timeout)
+                Timeout += tick
+                NextNote("3",Timeout)
+                NextNote("4",Timeout)
+                Timeout += tick
+            }
+        }
+    },
+    Pattern4: function() {
+        //Falling time 900ms
+        //74bpm
+        //in miliseconds
+        var beat = 922
+        var tick = beat/4
+        //When to start song
+        var StartMusicTime = 1000
+        //wait till note start
+        var Timeout = 1300;
+        //Milliseconds per beat
+        
+    
+        if (!Started) {
+            Started = true 
+            //plays song after timeout
+            setTimeout(function() {
+                Song3.play();
+            }, StartMusicTime)
+            // (note,Timeout)
+            // Timeout += delay till next
+            for (i=0; i<1000; i++) {
+                NextNote("1",Timeout)
+                NextNote("2",Timeout)
+                Timeout += 0.5*tick
+                NextNote("3",Timeout)
+                NextNote("4",Timeout)
+                Timeout += 0.5*tick
+            }          
+/*
+NextNote("1",Timeout)
+            NextNote("3",Timeout)
+            Timeout += beat
+            NextNote("2",Timeout)
+            NextNote("4",Timeout)
+            Timeout += beat
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+*/
+        } else {
+            PauseAllSongs(StartMusicTime, "Pattern4")
+        }
+    },
+    Pattern5: function() {
+        //74bpm
+        //in miliseconds
+        var beat = 922
+        var tick = beat/4
+        //When to start song
+        var StartMusicTime = 1000
+        //wait till note start
+        var Timeout = 1300;
+        //Milliseconds per beat
+        if (!Started) {
+            Started = true 
+            //plays song after timeout
+            setTimeout(function() {
+                Song3.play();
+            }, StartMusicTime)
+            // (note,Timeout)
+            // Timeout += delay till next
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += beat//
+            NextNote("1",Timeout)
+            NextNote("3",Timeout)
+            Timeout += beat//
+            NextNote("2",Timeout)
+            NextNote("4",Timeout)
+            Timeout += beat//
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick//
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("4",Timeout)
+            Timeout += tick//
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("4",Timeout)
+            Timeout += 2*tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += 2*tick
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += 2* tick
+            NextNote("1",Timeout)
+            Timeout += 2* tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += 0.5*beat // 3 keer achterelkaar tappen
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += beat //0.5*beat
+            NextNote("1",Timeout)
+            Timeout += 2*tick
+            NextNote("1",Timeout)
+            Timeout += 0.5*tick //
+            NextNote("2",Timeout)
+            Timeout += 0.5*tick
+            NextNote("1",Timeout)
+            Timeout += 0.5*tick
+            NextNote("2",Timeout)
+            Timeout += 0.5*tick
+            NextNote("3",Timeout)
+            Timeout += beat //+beat
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += 2*tick
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += 2*tick
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += beat+2*tick //+beat
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick     
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += beat
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += 2*tick      
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += tick         
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick         
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += tick   
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            Timeout += tick   
+            NextNote("1",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick 
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += 2*tick
+            NextNote("2",Timeout)
+            Timeout += 2*tick
+            for (i = 1; i <= 2; i++) {
+                NextNote("2",Timeout)
+                Timeout += tick/2
+                NextNote("3",Timeout)
+                Timeout += tick/2
+            }
+            NextNote("2",Timeout)
+            Timeout += 3*tick
+            NextNote("4",Timeout)
+            Timeout += tick
+            for (i = 1; i <= 2; i++) {
+                NextNote("4",Timeout)
+                Timeout += tick/2
+                NextNote("3",Timeout)
+                Timeout += tick/2
+            }
+            NextNote("2",Timeout)
+            Timeout += beat
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += 3*tick
+            NextNote("1",Timeout)
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            NextNote("3",Timeout)
+            Timeout += 3*tick         
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += 2*tick
+            for (i = 1; i <= 2; i++) {
+                NextNote("1",Timeout)
+                NextNote("3",Timeout)
+                Timeout += tick/2
+                NextNote("2",Timeout)
+                NextNote("4",Timeout)
+                Timeout += tick/2 
+            }
+            NextNote("1",Timeout)
+            NextNote("2",Timeout)
+            NextNote("3",Timeout)
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("4",Timeout)
+            Timeout += tick
+            NextNote("1",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("2",Timeout)
+            Timeout += tick
+            NextNote("3",Timeout)
+            Timeout += tick
+            NextNote("4",Timeout)
+
+        } else {
+            PauseAllSongs(StartMusicTime, "Pattern5")
+        }
+    }
+}
+//template
+{
+/* pattern template
+
+        //wait till note start
+        var Timeout = 
+        //When to start song
+        var StartMusicTime = 
+        //Milliseconds per beat
+        var beat = 
+        var tick = 
+    
+        if (!Started) {
+            Started = true 
+            //plays song after timeout
+            setTimeout(function() {
+                Song3.play();
+            }, StartMusicTime)
+            // (note,Timeout)
+            // Timeout += delay till next
+            NextNote("1",Timeout)
+            Timeout += tick
+    
+            setTimeout(function() {
+                SongEnd()
+            }, Timeout+900)
+        } else {
+            PauseAllSongs("Pattern3")
+        }
+*/
+}
+
+function UpDateKeys() {
+    // Keys Uppercased
+    UpKeyArray = KeyArray.map(function(x){ return x.toUpperCase();})
+
+    document.getElementById("Key1").innerHTML = UpKeyArray[0];
+    document.getElementById("Key2").innerHTML = UpKeyArray[1];
+    document.getElementById("Key3").innerHTML = UpKeyArray[2];
+    document.getElementById("Key4").innerHTML = UpKeyArray[3];
+}
+function LoadSong(number) {
+    Patterns["Pattern"+number]()
+}
+function NextNote(note, delay) {
+    setTimeout(function() {
+        CreateNote(note)
+    }, delay)
+}
+function SongEnd() {
+    Started = false
+    hitMessage.style.opacity = 0
+    missMessage.style.opacity = 0
+    perfectMessage.style.opacity = 0
+}
+function PauseAllSongs(StartMusicTime,pattern) {
+    RealSongPause()
+    setTimeout(function() {
+        RealSongPause()
+        SongEnd()
+        Patterns[pattern]();
+    }, StartMusicTime)
+}
+function RealSongPause() {
+//Song1.pause();
+    //Song1.currentTime = 0
+    //Song2.pause();
+    //Song2.currentTime = 0
+    Song3.currentTime = 0
+    Song3.pause();
+}
+
+var ChangingKey = false
+var KeyNumber = null
+
+function ChangeKey(keyNumber) {
+        if (keyNumber != 0) {
+        KeyNumber = keyNumber
+        var KeyBindingElement = document.getElementById("KeyBinding"+KeyNumber)
+        KeyBindingElement.innerHTML = "?"
+        ChangingKey = true
+    } else {
+        ChangingKey = false
+        UpDateKeys();
+        var KeyBindingElement = document.getElementById("KeyBinding"+KeyNumber)
+        KeyBindingElement.innerHTML = UpKeyArray[KeyNumber-1]
+        KeyNumber = null
+    } 
+}
+
+
+
+function RevertKeyColor(Key) {
+    document.getElementById(Key).style.backgroundColor = "lightblue";
+}
+
+function SetKeyColor(Key) {
+    document.getElementById(Key).style.backgroundColor = "yellow";
+}
+
+function CreateNote(NoteRowIndex) {
+    //creates note and sets it in a row
+    var Note = NoteObject["OGNote"+ NoteRowIndex].cloneNode(true)
+    document.getElementById("NoteRow"+NoteRowIndex).appendChild(Note)
+    //begin autoscroll
+    var MarginTop = 0
+    AutoScroll(Note, MarginTop)
+}
+
+function AutoScroll(Note, MarginTop) {
+    MarginTop = MarginTop + 1
+    Note.style.marginTop = MarginTop + "rem"
+    if (MarginTop > 60 && Note.parentNode != null) {
+        Note.parentNode.removeChild(Note)
+        MissMessage()
+    }   
+    else {
+        setTimeout(function() {        
+            AutoScroll(Note,MarginTop)
+        }, 15)
+    }
+    
+}
+
+var hitMessage
+var missMessage
+var perfectMessage
+
+function Hit(noteRow) {
+    NoteRow = document.getElementById(noteRow)
+    var AlreadyHitOrMissed = false
+    var AmountOfNotesOnRow = NoteRow.childElementCount
+    if (AmountOfNotesOnRow == 0 && AlreadyHitOrMissed == false) {
+        MissMessage()
+    }
+    else {
+    //for all notes in a row
+        for (NoteCount = 0; NoteCount < AmountOfNotesOnRow; NoteCount++) {
+            var note = (NoteRow.children[NoteCount])
+            if (note != null && note.parentNode != null) {
+                var Distance = note.style.marginTop.replace("rem","")
+            }
+            //check if hit
+            if (Distance > HitRange[0] && Distance < HitRange[1] && AlreadyHitOrMissed == false) {
+                //remove note
+                if (note != null && note.parentNode != null) {
+                    note.parentNode.removeChild(note)
+                }
+                //check if perfect
+                if (Distance > PerfectRange[0] && Distance < PerfectRange[1]) {
+                    AlreadyHitOrMissed = true
+                    PerfectCounter()
+                    //perfect message
+                    perfectMessage.style.opacity = 1
+                    hitMessage.style.opacity = 0
+                    missMessage.style.opacity = 0
+                    setTimeout(function() {
+                        hitMessage.style.opacity = 0
+                    }, 400)  
+                //hit
+                } else {
+                    AlreadyHitOrMissed = true
+                    HitCounter()
+                    //hit messages
+                    hitMessage.style.opacity = 1
+                    perfectMessage.style.opacity = 0
+                    missMessage.style.opacity = 0 
+                }
+            //missed
+            }
+            else if (AlreadyHitOrMissed == false) {
+                MissMessage()
+            }
+        }
+    }
+    /*
+
+    */
+}
+
+function MissMessage() {
+    if (!Started) {
+        setTimeout(function() {
+            missMessage.style.opacity = 0
+        }, 400)
+    }
+    missMessage.style.opacity = 1
+    perfectMessage.style.opacity = 0
+    hitMessage.style.opacity = 0
+    AlreadyHitOrMissed = true
+    MissCounter()
+}
+
+var hitCounter = 0
+var perfectCounter = 0
+var missCounter = 0
+
+function HitCounter() {
+    hitCounter += 1
+    document.getElementById("HitCounter").innerHTML = hitCounter 
+}
+function PerfectCounter() {
+    perfectCounter += 1
+    document.getElementById("PerfectCounter").innerHTML = perfectCounter
+}
+function MissCounter() {
+    if (Started) {
+        missCounter += 1
+        document.getElementById("MissCounter").innerHTML = missCounter
+    }
+}
+
+
+document.addEventListener('keydown', function Input(event) {
+    if (ChangingKey) {
+            KeyArray[KeyNumber-1] = event.key
+            if (event.key != null) {
+                ChangeKey("0")
+            }
+            
+    } else if (Started == false && event.key == "Enter") {
+        //StartButton()
+    }   
+    else {
+        switch(event.key) {
+            case KeyArray[0]:
+                SetKeyColor("Key1")
+                Hit("NoteRow1")
+            break;
+    
+            case KeyArray[1]:
+                SetKeyColor("Key2")
+                Hit("NoteRow2")
+            break;
+    
+            case KeyArray[2]:
+                SetKeyColor("Key3")
+                Hit("NoteRow3")
+            break;
+    
+            case KeyArray[3]:
+                SetKeyColor("Key4")
+                Hit("NoteRow4")
+            break;
+        }
+    }
+})
+
+document.addEventListener('keyup', function(event) {
+    switch(event.key) {
+        case KeyArray[0]:
+            RevertKeyColor("Key1")
+            break;
+        case KeyArray[1]:
+            RevertKeyColor("Key2")
+            break;
+        case KeyArray[2]:
+            RevertKeyColor("Key3")
+            break;
+        case KeyArray[3]:
+            RevertKeyColor("Key4")
+            break;
+    }
+})
+
+</script>
+    <style>body {
+    background-color: slategray;
+    margin: 0rem;
+    display: flex;
+    justify-content: center;
+	overflow-y:hidden;
+}
+.TrackBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0rem 6rem 0rem 6rem;
+}
+.Track {
+    padding: 0rem 2.5rem 0rem 2.5rem;
+    background-color: lightgray;
+    width: 30rem;
+    height: 61rem;
+    gap: 3.5rem;
+    display: flex;
+    justify-content: center;
+}
+.NoteRow {
+    width: 5rem;
+    height: 100%;
+    background-color: gray;
+}
+.Note1 {
+    width: 5rem;
+    height: 5rem;
+    background-color: lime;
+    position: absolute;
+}
+.Note2 {
+    width: 5rem;
+    height: 5rem;
+    background-color: yellow;
+    position: absolute;
+}
+.Note3 {
+    width: 5rem;
+    height: 5rem;
+    background-color: yellow;
+    position: absolute;
+}
+.Note4 {
+    width: 5rem;
+    height: 5rem;
+    background-color: lime;
+    position: absolute;
+}
+.KeyBox {
+    width: 100%;
+    height: 5rem;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: -12rem;
+}
+.Keys {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    border: 0.2rem solid black;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+.Message {
+    opacity: 0;
+    position: absolute;
+    margin-top: 40rem;
+    font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: 1000;
+    -webkit-text-stroke-width: 0.05rem;
+    -webkit-text-stroke-color: white;
+}
+.Hit {
+    color: orange;
+}
+.Miss {
+    color: red;
+}
+.Perfect {
+    color: green;
+}
+.CounterBox {
+    background-color: lightgray;
+    padding: 2rem;
+}
+.Counter {
+    height: 1rem;
+}
+.SongBox {
+    display: flex;
+    flex-flow: column;
+}
+.SongTab {
+    height: 3rem;
+}
+.Options{
+    padding: 1rem;
+    background-color: lightgray;
+}
+.KeyBindingsBox{
+    display: flex;
+    gap: 0.5rem;
+}
+.KeyBindingsKeys {
+    padding: 0.5rem;
+    background-color: gray;
+    color: white;
+}
+.KeyBindingsKeys:hover {
+    cursor: pointer;
+}
+
+
+/* 
+.StartButton {
+    background-color: yellow;
+    margin-top: 30rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;  
+}
+*/</style>
+    <title>Epik</title>
+</head>
+<body onload="OnLoad()">
+    <div class="Options">
+        <div>Keybindings, click to change</div>
+        <div class="KeyBindingsBox">
+            <div onclick="ChangeKey(1)" class="KeyBindingsKeys" id="KeyBinding1">?</div>
+            <div onclick="ChangeKey(2)" class="KeyBindingsKeys" id="KeyBinding2">?</div>
+            <div onclick="ChangeKey(3)" class="KeyBindingsKeys" id="KeyBinding3">?</div>
+            <div onclick="ChangeKey(4)" class="KeyBindingsKeys" id="KeyBinding4">?</div>
+        </div>
+        <div>volume</div>
+        <input type="range" id="VolumeSlider" value="100">
+    </div>
+   
+    <div class="TrackBox">
+        <div class="Hit Message" id="HitMessage">Hit</div>
+        <div class="Miss Message" id="MissMessage">Miss</div>
+        <div class="Perfect Message" id="PerfectMessage">Perfect</div>
+        <div class="Track">
+            <div class="NoteRow" id="NoteRow1">
+                
+            </div>
+            <div class="NoteRow" id="NoteRow2">
+
+            </div>
+            <div class="NoteRow" id="NoteRow3">
+
+            </div>
+            <div class="NoteRow" id="NoteRow4">
+
+            </div>
+        </div>
+        <div class="KeyBox">
+            <div><div class="Keys" id="Key1">?</div></div>
+            <div><div class="Keys" id="Key2">?</div></div>
+            <div><div class="Keys" id="Key3">?</div></div>
+            <div><div class="Keys" id="Key4">?</div></div>
+        </div> 
+    </div>
+    <div class="CounterBox">
+        <div class="Counter">Hits: <span id="HitCounter">0</span></div>
+        <div class="Counter">Misses: <span id="MissCounter">0</span></div>
+        <div class="Counter">perfects: <span id="PerfectCounter">0</span></div>
+        
+    </div>
+    <div class="SongBox">
+        <button class="SongTab" onclick="LoadSong(1)">test1</button>
+        <button class="SongTab" onclick="LoadSong(2)">test2</button>
+        <button class="SongTab" onclick="LoadSong(3)">test3</button>
+        <button class="SongTab" onclick="LoadSong(4)">test4</button>
+        <button class="SongTab" onclick="LoadSong(5)">Pattern1</button>
+
+
+    </div>
+</body>
+</html>
+
+<!--
+
+<div class="StartButton" id="StartButton">press enter to start</div>
+
+-->
