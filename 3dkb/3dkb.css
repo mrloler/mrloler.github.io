@@ -1,0 +1,238 @@
+:root {
+    --defaultSize: 0.16rem;
+    --defaultColor1: white;
+    --defaultColor2: black;
+    --defaultColor3: rgb(241, 241, 241);
+}
+body {
+    background-color: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+/*key properties*/
+/* normal keys*/
+.keyInside{
+    width: calc(10*var(--defaultSize));
+    height: calc(10*var(--defaultSize));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(-0.1*var(--defaultSize));
+    margin-right: calc(0.8*var(--defaultSize));
+    margin-bottom: calc(3.6*var(--defaultSize));
+    margin-left: calc(0.8*var(--defaultSize));
+    border: var(--defaultColor2) calc(0.1*var(--defaultSize)) solid;
+    border-radius: calc(0.4*var(--defaultSize));
+    background-color: var(--defaultColor1);
+    font-size: 0.55rem;
+    font-family:'Baloo Bhai 2', cursive,'Roboto', sans-serif;
+}
+.keyOutside {
+    border: var(--defaultColor2) calc(0.1*var(--defaultSize)) solid;
+    border-radius: calc(0.4*var(--defaultSize));
+    margin-top: calc(0.1*var(--defaultSize));
+    margin-right: calc(0.05*var(--defaultSize));
+    margin-bottom: calc(0.1*var(--defaultSize));
+    margin-left: calc(0.05*var(--defaultSize));
+    background-color: var(--defaultColor3);
+}
+.diagLineLeft {
+    width: calc(0.05*var(--defaultSize));
+    height: calc(3.8*var(--defaultSize));
+    background-color: var(--defaultColor2);
+    transform: rotate(13deg);
+    margin-top: calc(-4.1*var(--defaultSize));
+    margin-bottom: calc(-4*var(--defaultSize));
+    margin-left: calc(0.8*var(--defaultSize));
+}
+.diagLineRight {
+    width: calc(0.05*var(--defaultSize));
+    height: calc(3.9*var(--defaultSize));
+    background-color: var(--defaultColor2);
+    transform: rotate(-13deg);
+    margin-top: calc(-4.1*var(--defaultSize));
+    margin-bottom: calc(-4*var(--defaultSize));
+    margin-right: calc(1.2*var(--defaultSize));
+}
+.keyBottom {
+    display: flex;
+    justify-content: space-between;
+}
+/* keyboard&mouse */
+.KeyboardAndMouse {
+    display: flex;
+    justify-content: center;
+}
+/* options */
+.optionsButton {
+    height: 1.5rem;
+    width: 20rem;
+}
+.dropDownOptions {
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+.keyboardSelectionOptions {
+    height: 1.5rem;
+    width: 20rem;
+    border: 0.1rem solid var(--defaultColor2);
+    display: flex;
+    align-items: center;
+    padding: 0 0.2rem 0 1rem; 
+    background-color: var(--defaultColor1);
+    color: var(--defaultColor2);
+}
+.keyboardSelectionOptions:hover {
+    cursor: pointer;
+}
+#options {
+    justify-content: space-between;
+}
+#dropDownLogo {
+    margin-right: 1.5rem;
+    font-family: monospace;
+}
+/* keyboard */
+.keyboardPart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 1rem;
+    z-index: 1;
+}
+.keyboardMain {
+    display: flex;
+    padding: 1rem;
+    border: var(--defaultColor2) solid 0.2rem;
+    border-radius: 0 0 1rem 1rem;
+    background-color: var(--defaultColor1);
+    z-index: -1;
+}
+.keyboardBottom {
+    height: calc(8*var(--defaultSize));
+    margin-top: calc(-5*var(--defaultSize));
+    border-bottom-left-radius: calc(10*var(--defaultSize));
+    border-bottom-Right-radius: calc(10*var(--defaultSize));
+    z-index: -2;
+    border: black calc(1*var(--defaultSize)) solid;
+    border-top: transparent;
+}
+.keyboardArrows {
+    margin-left: calc(4*var(--defaultSize));
+}
+.keyboardNumpad {
+    margin-left: calc(4*var(--defaultSize));
+}
+.keyboardRow {
+    display: flex;
+    gap: calc(1.4*var(--defaultSize));
+}
+.KeyLogos {
+    width: 0.7rem;
+}
+.BeastCodeLogo {
+    width: 1.3rem;
+    margin-right: 0.5rem;
+}
+.BeastCodeWordLogo {
+    width: 6rem;
+    margin: calc(-14*var(--defaultSize)) 0 calc(-14*var(--defaultSize)) calc(3*var(--defaultSize));
+}
+.SmallerFont {
+    font-size: 0.6rem;
+}
+.keyHeight {
+    height: calc(15*var(--defaultSize));
+}
+/* at keys*/ 
+#keyboardSelectionOption3 {
+    background-color: gray;
+}
+#FnKey {
+    background-color: gray;
+}
+/* KeyPosition */
+#F4 {
+    margin-right: calc(7*var(--defaultSize));
+}
+#F8 {
+    margin-right: calc(8*var(--defaultSize));
+}
+#ArrowUp {
+    margin-left: calc(15*var(--defaultSize));
+}
+#NumpadAdd {
+    margin-bottom: calc(-16*var(--defaultSize));
+}
+#NumpadEnter {
+    margin-bottom: calc(-16*var(--defaultSize));
+}
+/* full keyboard*/
+.EscapeKeyKeyboardFullSize {
+    margin-right: calc(14.5*var(--defaultSize));
+}
+
+/*key size*/
+/* main keyboard*/
+/*row 1*/
+/*row 2*/
+.BackspaceSize {
+    width: calc(26*var(--defaultSize));
+}
+/*row 3*/
+.TabSize {
+    width: calc(18*var(--defaultSize));
+}
+.BackslashSize {
+    width: calc(18*var(--defaultSize));
+}
+/*row 4*/
+.CapsLockSize {
+    width: calc(22*var(--defaultSize));
+}
+.EnterSize {
+    width: calc(28*var(--defaultSize));
+}
+/*row 5*/
+.ShiftLeftSize {
+    width: calc(32*var(--defaultSize));
+}
+.ShiftRightSize {
+    width: calc(32*var(--defaultSize));
+}
+/*row 6*/
+.ControlLeftSize {
+    width: calc(21*var(--defaultSize));
+}
+.MetaLeftSize {
+    width: calc(18*var(--defaultSize));
+}
+.AltLeftSize {
+    width: calc(18*var(--defaultSize));
+}
+.SpaceSize {
+    width: calc(70*var(--defaultSize));
+}
+.ContextMenuSize {
+    width: calc(18*var(--defaultSize));
+}
+.ControlRightSize {
+    width: calc(18*var(--defaultSize));
+}
+/* numpad*/
+/*row 1*/
+/*row 2*/   
+/*row 3*/
+/*row 4*/
+.NumpadAddSize {
+    height: calc(26*var(--defaultSize));
+}
+/*row 5*/
+.NumpadEnterSize {
+    height: calc(27*var(--defaultSize));
+}
+/*row 6*/
+.Numpad0Size {
+    width: calc(25*var(--defaultSize));
+}
