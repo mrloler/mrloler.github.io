@@ -1,0 +1,26 @@
+.main-box
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box
+{
+    border: 2px solid #fff;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+
+.box:hover
+{
+    background-color: #333;
+}
+
+.titlebar
+{
+    width: 100vw;
+    height: 40vh;
+    object-fit: cover;
+    object-position: 0 30%;
+}

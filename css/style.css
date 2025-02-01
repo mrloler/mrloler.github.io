@@ -1,0 +1,20 @@
+body
+{
+    background-color: #222;
+}
+
+h1
+{
+    color: #fff;
+}
+
+a
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.default-section
+{
+    width: 1200px;
+}
