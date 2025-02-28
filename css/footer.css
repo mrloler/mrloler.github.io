@@ -6,3 +6,8 @@ footer
     background-color: #444;
     padding: 40px 0;
 }
+
+.default-section
+{
+    width: 1200px;
+}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Epik website</title>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/main.css">
@@ -14,23 +15,34 @@
     <header>
         <a href="/"><img src="media/logo.png" id="logo"></a>
         <nav class="default-section">
-            <a href="/">home</a>
-            <a href="#games">games</a>
+            <a href="/" class="nav-item">Home</a>
+            <a href="#games" class="nav-item">Games</a>
         </nav>
     </header>
-    <main id="games">
-        <div class="main-box">
-            <div>
-                <img src="media/title-screen-image.jpg" class="titlebar">
+    <main>
+        <img src="media/title-screen-image.jpg" class="titlebar">
+        <div class="section">
+            <div class="row" id="games">
+                <div class="column">
+                    <h1> New projects </h1>
+                    <a href="projects/ap_game_html/ap_game.html" class="box">2D Shooter (New Version)</a>
+                </div>
+                <div class="column">
+                    <h1> Old projects </h1>
+                    <a href="projects/rythmgame" class="box">rythmgame</a>
+                    <a href="projects/vidtest" class="box">vid test</a>
+                    <a href="projects/DontFryMe" class="box">Dont Fry Me</a>
+                    <a href="projects/3dkb" class="box">3D Keyboard tester</a>
+                    <a href="projects/rocketjumpgame.zip" class="box">Rocket Jump Game</a>
+                    <a href="projects/2d_shooter_test.zip" class="box">2D Shooter (Old Version)</a>
+                </div>
             </div>
-            <h1> Hello </h1>
-            <a href="projects/rythmgame" class="box">rythmgame</a>
-            <a href="projects/vidtest" class="box">vid test</a>
-            <a href="projects/DontFryMe" class="box">Dont Fry Me</a>
-            <a href="projects/3dkb" class="box">3D Keyboard tester</a>
-            <a href="projects/rocketjumpgame.zip" class="box">Rocket Jump Game</a>
-            <a href="projects/2d_shooter_test.zip" class="box">2D Shooter (Old Version)</a>
-            <a href="projects/ap_game_html/" class="box">2D Shooter (New Version)</a>
+        </div>
+
+        <div class="row">
+            <div class="column">
+
+            </div>
         </div>
     </main>
     <footer>
