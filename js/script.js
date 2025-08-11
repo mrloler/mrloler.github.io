@@ -19,10 +19,11 @@ $(document).ready(function() {
 
     // Detect link clicks on page
     $(document).on('click', 'a', function(event) {
-        event.preventDefault();
-        var href = $(this).attr('href');
-        changePage(href)
-        //changePage()
+        if ($(this).attr('target') !== '_blank'){ // Check if the target is not blank, else its gonna open the html/file normally
+            event.preventDefault();
+            var href = $(this).attr('href');
+            changePage(href)
+        }
     });
 
 
