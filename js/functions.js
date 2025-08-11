@@ -7,7 +7,7 @@ export function changePage(page, pushState = true)
     } 
     var html_string = `/pages/${page}.html`;
     if (page == undefined || !validURLS.includes(page)) {
-        html_string = "/pages/404.html"; // Change to 404 page
+        html_string = "/pages/404_page.html"; // Change to 404 page
     }
 
     $("#main").load(html_string); // Change to page
