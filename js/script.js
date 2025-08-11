@@ -1,29 +1,30 @@
-import { changePage } from "./functions.js";
+import { changePage, loadPage } from "./functions.js";
 
-// Page is loaded
-$(document).ready(function() {
+// Page (DOM) is loaded
+document.addEventListener('DOMContentLoaded', function () {
     // loads header + main + footer to index.html
-    $("#header").load("pages/components/header.html");
-    $("#main").load("pages/home.html");
-    $("#footer").load("pages/components/footer.html");
+    loadPage("pages/components/header.html", document.getElementById("header"));
+    loadPage("pagesd/home.html", document.getElementById("main"));
+    loadPage("pages/components/footer.html", document.getElementById("footer"));
     
     // When user comes from url or link
     const url = window.location.pathname;
     changePage(url.substring(1),false); // Remove the first '/' from the url
     
     // When User press next/prev page
-    $(window).on('popstate', function(e){
+    window.addEventListener('popstate', (event) => {
         const url = window.location.pathname;
         changePage(url.substring(1),false); // Remove the first '/' from the url
     });
 
     // Detect link clicks on page
-    $(document).on('click', 'a', function(event) {
-        if ($(this).attr('target') !== '_blank'){ // Check if the target is not blank, else its gonna open the html/file normally
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a')
+        if (link && link.target !== "_blank") { // Check if the target is not blank, else its gonna open the html/file normally
             event.preventDefault();
-            var href = $(this).attr('href');
-            changePage(href)
+            const href = event.target.getAttribute('href');
+            changePage(href);
         }
-    });
+    })
 });
 
