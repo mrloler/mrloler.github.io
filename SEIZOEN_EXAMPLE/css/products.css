@@ -1,0 +1,10 @@
+.temp-img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.product-column
+{
+    max-width: 33%;
+}

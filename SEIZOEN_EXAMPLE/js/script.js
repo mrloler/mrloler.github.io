@@ -1,0 +1,25 @@
+import { changePage } from "./functions.js";
+
+// Page is loaded
+$(document).ready(function() {
+    // loads header + main + footer to index.html
+    $("#header").load("pages/components/header.html");
+    $("#main").load("pages/home.html");
+    $("#footer").load("pages/components/footer.html");
+    
+    // When user comes from url or link
+    const url = window.location.pathname;
+    changePage(url.substring(1)); // Remove the first '/' from the url
+
+    // detect button click
+    $(document).on ("click", "button", function () {
+        var href = $(this).attr('href');
+        changePage(href)
+    });
+
+    // When User press next/prev page
+    $(window).on('popstate', function(e){
+        const url = window.location.pathname;
+        changePage(url.substring(1),false); // Remove the first '/' from the url
+    });
+});

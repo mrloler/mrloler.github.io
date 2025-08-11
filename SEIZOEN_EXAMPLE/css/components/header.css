@@ -1,0 +1,12 @@
+.top-header {
+    background-color: var(--primary-color);
+}
+
+.bottom-header {
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.logo {
+    max-width: 70px;
+}

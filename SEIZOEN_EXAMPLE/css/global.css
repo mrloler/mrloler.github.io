@@ -1,0 +1,46 @@
+@import "/css/fontSizes.css";
+
+:root {
+    --primary-color: #00bbbb;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    min-height: 70vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    width: 1080px;
+    padding: 10px 10px 10px 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Mobile breakpoint */
+@media (max-width: 600px) {
+    .row {
+        flex-wrap: wrap;
+    }
+}
