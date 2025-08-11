@@ -7,6 +7,10 @@ footer {
 }
 
 .sub-footer {
-    padding: 16px 0px;
-    background-color: gray;
+    padding: 1rem 0px;
+    background-color: black;
+}
+
+.sub-footer .row {
+    padding: 0;
 }

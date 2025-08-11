@@ -4,55 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="media/logo.png">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
     <title>Epik website</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/global.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="js/script.js"></script>
 </head>
 <body>
-    <header>
-        <a href="/"><img src="media/logo.png" id="logo"></a>
-        <nav class="default-section">
-            <a href="/" class="nav-item">Home</a>
-            <a href="#games" class="nav-item">Games</a>
-        </nav>
-    </header>
-    <main>
-        <img src="media/title-screen-image.jpg" class="titlebar">
-        <div class="section">
-            <div class="row" id="games">
-                <div class="column">
-                    <h1> New projects </h1>
-                    <a href="projects/ap_game_html/armed_paws.html" target="_blank" class="box">Armed Paws</a>
-                </div>
-                <div class="column">
-                    <h1> Old projects </h1>
-                    <a href="projects/rythmgame"            target="_blank" class="box">Rythmgame</a>
-                    <a href="projects/3dkb"                 target="_blank" class="box">3D Keyboard tester</a>
-                    <a href="projects/mlg"                  target="_blank" class="box">Epilepsy page</a>
-                    <a href="projects/DontFryMe"            target="_blank" class="box">Dont Fry Me (Game)</a>
-                    <a href="projects/rocketjumpgame.zip"   target="_blank" class="box">Rocket Jump Game</a>
-                    <a href="projects/2d_shooter_test.zip"  target="_blank" class="box">2D Shooter game</a>
-                    <a href="projects/vidtest"              target="_blank" class="box">Video test</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="default-section">
-            <a href="/"><img src="media/logo.png" id="logo"></a>
-        </div>
-
-    </footer>
-
+    <header id="header"></header>
+    <main id="main"></main>
+    <footer id="footer"></footer>
 </body>
 </html>

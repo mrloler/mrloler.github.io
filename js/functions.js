@@ -2,6 +2,9 @@ import { validURLS } from "./validURLS.js";
 
 export function changePage(page, pushState = true)
 {
+    if (page == "") { // Domain name entered without url
+        page = "home"; // Redirect to home
+    } 
     var html_string = `/pages/${page}.html`;
     if (page == undefined || !validURLS.includes(page)) {
         html_string = "/pages/404.html"; // Change to 404 page

@@ -1,0 +1,6 @@
+.titlebar {
+    max-height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 30%;
+}

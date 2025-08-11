@@ -9,17 +9,22 @@ $(document).ready(function() {
     
     // When user comes from url or link
     const url = window.location.pathname;
-    changePage(url.substring(1)); // Remove the first '/' from the url
-
-    // detect button click
-    $(document).on ("click", "button", function () {
-        var href = $(this).attr('href');
-        changePage(href)
-    });
-
+    changePage(url.substring(1),false); // Remove the first '/' from the url
+    
     // When User press next/prev page
     $(window).on('popstate', function(e){
         const url = window.location.pathname;
         changePage(url.substring(1),false); // Remove the first '/' from the url
     });
+
+    // Detect link clicks on page
+    $(document).on('click', 'a', function(event) {
+        event.preventDefault();
+        var href = $(this).attr('href');
+        changePage(href)
+        //changePage()
+    });
+
+
 });
+
