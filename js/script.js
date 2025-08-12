@@ -4,7 +4,7 @@ import { changePage, loadPage } from "./functions.js";
 document.addEventListener('DOMContentLoaded', function () {
     // loads header + main + footer to index.html
     loadPage("pages/components/header.html", document.getElementById("header"));
-    loadPage("pagesd/home.html", document.getElementById("main"));
+    loadPage("pages/home.html", document.getElementById("main"));
     loadPage("pages/components/footer.html", document.getElementById("footer"));
     
     // When user comes from url or link
@@ -19,11 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Detect link clicks on page
     document.addEventListener('click', function(event) {
-        const link = event.target.closest('a')
-        if (link && link.target !== "_blank") { // Check if the target is not blank, else its gonna open the html/file normally
+        const anchor = event.target.closest('a')
+        if (anchor && anchor.target !== "_blank") { // Check if the target is not blank, else its gonna open the html/file normally
             event.preventDefault();
-            const href = event.target.getAttribute('href');
-            changePage(href);
+            changePage(anchor.getAttribute('href'));
         }
     })
 });
