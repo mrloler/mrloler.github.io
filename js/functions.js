@@ -10,7 +10,7 @@ export function changePage(page, pushState = true)
     page = page.split('#')[0]; // remove #anchors from string 
 
     var html_string = `/pages/${page}.html`;
-    if (page == undefined || !validURLS.includes(page)) {
+    if (page == undefined || !validURLS.includes(page)) { // Check if page is a valid URL
         html_string = "/pages/404_page.html"; // Change to 404 page
     }
 
@@ -36,3 +36,4 @@ function scrollToAnchor(anchor) {
         element.scrollIntoView({ behavior: 'smooth' });
     }
 }
+

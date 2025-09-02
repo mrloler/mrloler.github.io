@@ -1,3 +1,3 @@
 export const validURLS = [
-    "home", "games"
+    "home", "games", "bartender"
 ]

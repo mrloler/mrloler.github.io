@@ -60,6 +60,7 @@ img {
 
 .primary-button:hover {
     background-color: var(--secondary-color);
+    cursor: pointer;
 }
 
 a

@@ -20,10 +20,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Detect link clicks on page
     document.addEventListener('click', function(event) {
         const anchor = event.target.closest('a')
-        if (anchor && anchor.target !== "_blank") { // Check if the target is not blank, else its gonna open the html/file normally
-            event.preventDefault();
-            changePage(anchor.getAttribute('href'));
+        if (anchor) {
+            // Check "doChangePage" attribute. Call changePage function when true
+            const ChangePageAttr = anchor.getAttribute('changePage');
+            if (ChangePageAttr == 1 && anchor.target !== "_blank") { // Check if the target is not blank, else its gonna open the html/file normally
+                event.preventDefault();
+                changePage(anchor.getAttribute('href'));
+            }
+
+            // Check "dispense" attribute. Make HTTPS call if true.
+            const dispenseAttr = anchor.getAttribute('dispense');
+            if (dispenseAttr == 1){
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=1');
+                alert("order sent for drink1")
+            } else if (dispenseAttr == 2) {
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=2');
+                alert("order sent for drink2")
+            } else if (dispenseAttr == 3) {
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=3');
+                alert("order sent for drink3")
+            }
         }
     })
 });
-
