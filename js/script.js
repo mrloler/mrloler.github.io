@@ -31,13 +31,25 @@ document.addEventListener('DOMContentLoaded', function () {
             // Check "dispense" attribute. Make HTTPS call if true.
             const dispenseAttr = anchor.getAttribute('dispense');
             if (dispenseAttr == 1){
-                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=1');
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=1', {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
                 alert("order sent for drink1")
             } else if (dispenseAttr == 2) {
-                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=2');
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=2', {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
                 alert("order sent for drink2")
             } else if (dispenseAttr == 3) {
-                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=3');
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=3', {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
                 alert("order sent for drink3")
             }
         }
