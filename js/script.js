@@ -36,21 +36,48 @@ document.addEventListener('DOMContentLoaded', function () {
                         'ngrok-skip-browser-warning': 'true'
                     }
                 });
-                alert("order sent for drink1")
+                alert("order sent for Vodka Cola")
             } else if (dispenseAttr == 2) {
                 fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=2', {
                     headers: {
                         'ngrok-skip-browser-warning': 'true'
                     }
                 });
-                alert("order sent for drink2")
+                alert("order sent for Amaretto cassis")
             } else if (dispenseAttr == 3) {
                 fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=3', {
                     headers: {
                         'ngrok-skip-browser-warning': 'true'
                     }
                 });
-                alert("order sent for drink3")
+                alert("order sent for Amaretto cola")
+            } else if (dispenseAttr == 4) {
+                fetch('https://arriving-terminally-lab.ngrok-free.app/?drink=4', {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                alert("order sent for Vodka cassis")
+            }
+
+            // Update data
+            const updateAttr = anchor.getAttribute('update');
+            if (updateAttr == 1) {
+                fetch('https://arriving-terminally-lab.ngrok-free.app/drinks_dispensed', {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.status);
+                    }
+                    return response.json();
+
+                }).then(data => {
+                    // update data
+                    const dataField = document.getElementById("bartender-data");
+                    dataField.innerHTML = data;
+                });
             }
         }
     })

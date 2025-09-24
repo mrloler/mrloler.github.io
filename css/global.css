@@ -13,6 +13,10 @@ body {
     color: var(--primary-text-color);
 }
 
+p {
+    line-height: 1.5rem;
+}
+
 main {
     min-height: 70vh;
 }
@@ -37,6 +41,10 @@ img {
     max-width: 1080px;
     padding: 1rem 2rem 1.5rem 2rem;
     box-sizing: border-box;
+}
+
+.full-width {
+    max-width: 100%;
 }
 
 .center {
